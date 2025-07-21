@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nuestra Carta - Sabores de Colombia{% endblock %}
+
+{% block content %}
+  <section id="menu-hero" class="colombian-hero">
+    <div class="hero-content">
+      <h1 class="heading-shadow">🇨🇴 Sabores Auténticos de Colombia 🇨🇴</h1>
+      <p class="hero-subtitle">Deliciosos platos tradicionales preparados con amor y sazón colombiana</p>
+    </div>
+  </section>
+
+  <section class="menu-intro">
+    <h2>Nuestra Carta Colombiana</h2>
+    <p class="menu-description">
+      Disfruta de los sabores más auténticos de nuestra bella Colombia. 
+      Cada plato está preparado con ingredientes frescos y recetas tradicionales 
+      que han pasado de generación en generación.
+    </p>
+  </section>
+
+  <div class="menu-container">
+    {% for item in menu %}
+      <article class="menu-item colombian-card">
+        <div class="item-header">
+          <h3 class="item-title">{{ item.title }}</h3>
+          <span class="item-price">${{ item.price|floatformat:0 }}</span>
+        </div>
+        <p class="item-description">{{ item.description }}</p>
+        <div class="colombian-accent"></div>
+      </article>
+    {% empty %}
+      <div class="no-menu-items">
+        <p>¡Próximamente tendremos deliciosos platos colombianos para ti!</p>
+        <p>🍽️ Mientras tanto, ¡visítanos para conocer nuestras especialidades del día!</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <section class="chef-recommendation">
+    <h3>🥘 Recomendación del Chef</h3>
+    <p>"Todos nuestros platos están preparados con el cariño y la tradición culinaria de Colombia. 
+    ¡No te puedes ir sin probar nuestras especialidades!" - Chef María Elena</p>
+  </section>
+{% endblock %}
